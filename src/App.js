@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Form } from './components/Form';
 import { Header } from './components/Header';
 
 const Container = styled.div`
@@ -16,7 +17,9 @@ export const App = () => {
   return (
     <Container>
       <Header title='Insurance Policy' />
-      <FormContainer></FormContainer>
+      <FormContainer>
+        <Form />
+      </FormContainer>
     </Container>
   );
 };
