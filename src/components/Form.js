@@ -1,21 +1,62 @@
+import styled from '@emotion/styled';
 import React from 'react';
+
+const Field = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+`;
+
+const Label = styled.label`
+  flex: 0 0 100px;
+`;
+
+const Select = styled.select`
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e1e1e1;
+  -webkit-appearance: none;
+`;
+
+const InputRadio = styled.input`
+  margin: 0 1rem;
+`;
+
+const Button = styled.button`
+  background-color: #00838f;
+  font-size: 16px;
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3 ease;
+  margin-top: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #26c6da;
+  }
+`;
 
 export const Form = () => {
   return (
     <form>
-      <div>
-        <label>Brand</label>
-        <select>
+      <Field>
+        <Label>Brand</Label>
+        <Select>
           <option value=''>-- Select --</option>
           <option value='american'>American</option>
           <option value='assian'>Assian</option>
           <option value='european'>European</option>
-        </select>
-      </div>
+        </Select>
+      </Field>
 
-      <div>
-        <label>Year</label>
-        <select>
+      <Field>
+        <Label>Year</Label>
+        <Select>
           <option value=''>-- Select --</option>
           <option value='2012'>2012</option>
           <option value='2013'>2013</option>
@@ -27,15 +68,16 @@ export const Form = () => {
           <option value='2019'>2019</option>
           <option value='2020'>2020</option>
           <option value='2021'>2021</option>
-        </select>
-      </div>
+        </Select>
+      </Field>
 
-      <div>
-        <label>Plan</label>
-        <input type='radio' name='plan' value='basic' /> Basic
-        <input type='radio' name='plan' value='complete' /> Complete
-        <button type='button'>Calculate</button>
-      </div>
+      <Field>
+        <Label>Plan</Label>
+        <InputRadio type='radio' name='plan' value='basic' /> Basic
+        <InputRadio type='radio' name='plan' value='complete' /> Complete
+      </Field>
+
+      <Button type='button'>Calculate</Button>
     </form>
   );
 };
