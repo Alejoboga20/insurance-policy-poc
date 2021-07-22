@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
+
+const initialState = {
+  brand: '',
+  year: '',
+  plan: '',
+};
 
 const Field = styled.div`
   display: flex;
@@ -42,11 +48,15 @@ const Button = styled.button`
 `;
 
 export const Form = () => {
+  const [data, setData] = useState(initialState);
+
+  const { brand, year, plan } = data;
+
   return (
     <form>
       <Field>
         <Label>Brand</Label>
-        <Select>
+        <Select name='brand' value={brand}>
           <option value=''>-- Select --</option>
           <option value='american'>American</option>
           <option value='assian'>Assian</option>
@@ -56,7 +66,7 @@ export const Form = () => {
 
       <Field>
         <Label>Year</Label>
-        <Select>
+        <Select name='year' value={year}>
           <option value=''>-- Select --</option>
           <option value='2012'>2012</option>
           <option value='2013'>2013</option>
@@ -73,8 +83,20 @@ export const Form = () => {
 
       <Field>
         <Label>Plan</Label>
-        <InputRadio type='radio' name='plan' value='basic' /> Basic
-        <InputRadio type='radio' name='plan' value='complete' /> Complete
+        <InputRadio
+          type='radio'
+          name='plan'
+          value='basic'
+          check={plan === 'basic'}
+        />{' '}
+        Basic
+        <InputRadio
+          type='radio'
+          name='plan'
+          value='complete'
+          check={plan === 'complete'}
+        />{' '}
+        Complete
       </Field>
 
       <Button type='button'>Calculate</Button>
