@@ -47,8 +47,18 @@ const Button = styled.button`
   }
 `;
 
+const Error = styled.div`
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
 export const Form = () => {
   const [data, setData] = useState(initialState);
+  const [error, setError] = useState(false);
 
   const { brand, year, plan } = data;
 
@@ -59,8 +69,20 @@ export const Form = () => {
     });
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    if (brand.trim() === '' || year.trim() === '' || plan.trim() === '') {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleOnSubmit}>
+      {error ? <Error>All Fields Are Mandatory</Error> : null}
       <Field>
         <Label>Brand</Label>
         <Select name='brand' value={brand} onChange={getInfo}>
@@ -108,7 +130,7 @@ export const Form = () => {
         Complete
       </Field>
 
-      <Button type='button'>Calculate</Button>
+      <Button type='submit'>Calculate</Button>
     </form>
   );
 };
