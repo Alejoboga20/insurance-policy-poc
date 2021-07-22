@@ -52,11 +52,18 @@ export const Form = () => {
 
   const { brand, year, plan } = data;
 
+  const getInfo = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: [e.target.value],
+    });
+  };
+
   return (
     <form>
       <Field>
         <Label>Brand</Label>
-        <Select name='brand' value={brand}>
+        <Select name='brand' value={brand} onChange={getInfo}>
           <option value=''>-- Select --</option>
           <option value='american'>American</option>
           <option value='assian'>Assian</option>
@@ -66,7 +73,7 @@ export const Form = () => {
 
       <Field>
         <Label>Year</Label>
-        <Select name='year' value={year}>
+        <Select name='year' value={year} onChange={getInfo}>
           <option value=''>-- Select --</option>
           <option value='2012'>2012</option>
           <option value='2013'>2013</option>
@@ -88,6 +95,7 @@ export const Form = () => {
           name='plan'
           value='basic'
           check={plan === 'basic'}
+          onChange={getInfo}
         />{' '}
         Basic
         <InputRadio
@@ -95,6 +103,7 @@ export const Form = () => {
           name='plan'
           value='complete'
           check={plan === 'complete'}
+          onChange={getInfo}
         />{' '}
         Complete
       </Field>
