@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
+import { getDifferenceYear } from '../helpers/helper';
 
 const initialState = {
   brand: '',
@@ -63,9 +64,10 @@ export const Form = () => {
   const { brand, year, plan } = data;
 
   const getInfo = (e) => {
+    console.log(e.target.name, e.target.value);
     setData({
       ...data,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -77,7 +79,13 @@ export const Form = () => {
       return;
     }
 
+    let result = 2000;
+
     setError(false);
+    const difference = getDifferenceYear(year);
+    result -= (difference * 3 * result) / 100;
+
+    console.log(result);
   };
 
   return (
