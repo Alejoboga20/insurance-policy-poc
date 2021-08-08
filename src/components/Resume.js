@@ -1,4 +1,13 @@
 import React from 'react';
+import styled from '@emotion/styled';
+
+const ResumeContainer = styled.div`
+  padding: 1rem;
+  text-align: center;
+  background-color: #00838f;
+  color: #fff;
+  margin-top: 1rem;
+`;
 
 export const Resume = ({ data }) => {
   const { brand, year, plan } = data;
@@ -6,14 +15,14 @@ export const Resume = ({ data }) => {
   if (brand === '' || year === '' || plan === '') return null;
 
   return (
-    <>
-      <h2>Cotization</h2>
+    <ResumeContainer>
+      <h2>Cotization Resume</h2>
 
       <ul>
         <li>Brand: {brand}</li>
         <li>Plan: {year}</li>
         <li>Year: {plan}</li>
       </ul>
-    </>
+    </ResumeContainer>
   );
 };
