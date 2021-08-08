@@ -61,7 +61,7 @@ const Error = styled.div`
   text-align: center;
 `;
 
-export const Form = () => {
+export const Form = ({ saveResume }) => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(false);
 
@@ -92,7 +92,8 @@ export const Form = () => {
     result = calculateBrand(brand) * result;
     const incrementPlan = calculatePlan(plan);
     result = parseFloat(result * incrementPlan).toFixed(2);
-    console.log(result);
+
+    saveResume({ cotization: result, data });
   };
 
   return (
