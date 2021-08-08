@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { capitalize } from '../helpers/helper';
 
 const ResumeContainer = styled.div`
   padding: 1rem;
@@ -19,9 +20,9 @@ export const Resume = ({ data }) => {
       <h2>Cotization Resume</h2>
 
       <ul>
-        <li>Brand: {brand}</li>
-        <li>Plan: {year}</li>
-        <li>Year: {plan}</li>
+        <li>Brand: {capitalize(brand)}</li>
+        <li>Plan: {capitalize(year)}</li>
+        <li>Year: {capitalize(plan)}</li>
       </ul>
     </ResumeContainer>
   );
