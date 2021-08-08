@@ -22,3 +22,7 @@ export function calculateBrand(brand) {
 
   return increment;
 }
+
+export function calculatePlan(plan) {
+  return plan === 'basic' ? 1.2 : 1.5;
+}

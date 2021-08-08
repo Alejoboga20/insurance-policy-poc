@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { getDifferenceYear, calculateBrand } from '../helpers/helper';
+import {
+  getDifferenceYear,
+  calculateBrand,
+  calculatePlan,
+} from '../helpers/helper';
 
 const initialState = {
   brand: '',
@@ -86,6 +90,8 @@ export const Form = () => {
     result -= (difference * 3 * result) / 100;
 
     result = calculateBrand(brand) * result;
+    const incrementPlan = calculatePlan(plan);
+    result = parseFloat(result * incrementPlan).toFixed(2);
     console.log(result);
   };
 
