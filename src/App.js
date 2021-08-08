@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { Form } from './components/Form';
 import { Header } from './components/Header';
+import { Result } from './components/Result';
 import { Resume } from './components/Resume';
 
 const initialState = {
@@ -26,7 +27,7 @@ const FormContainer = styled.div`
 export const App = () => {
   const [resume, saveResume] = useState(initialState);
 
-  const { data } = resume;
+  const { cotization, data } = resume;
 
   return (
     <Container>
@@ -35,6 +36,7 @@ export const App = () => {
         <Form saveResume={saveResume} />
 
         <Resume data={data} />
+        <Result cotization={cotization} />
       </FormContainer>
     </Container>
   );
