@@ -97,7 +97,7 @@ export const Form = ({ saveResume, setLoading }) => {
     setLoading(true);
 
     setTimeout(() => {
-      saveResume({ cotization: result, data });
+      saveResume({ cotization: Number(result), data });
       setLoading(false);
     }, 3000);
   };
