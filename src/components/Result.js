@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ResultContainer = styled.div`
   text-align: center;
@@ -31,7 +32,17 @@ export const Result = ({ cotization }) => {
     <Message>Pick brand, year and plan</Message>
   ) : (
     <ResultContainer>
-      <CotizationMessage>The cotization is: ${cotization}</CotizationMessage>
+      <TransitionGroup component='p' className='result'>
+        <CSSTransition
+          classNames='result'
+          key={cotization}
+          timeout={{ enter: 500, exit: 500 }}
+        >
+          <CotizationMessage>
+            The cotization is: ${cotization}
+          </CotizationMessage>
+        </CSSTransition>
+      </TransitionGroup>
     </ResultContainer>
   );
 };
