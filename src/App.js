@@ -4,6 +4,7 @@ import { Form } from './components/Form';
 import { Header } from './components/Header';
 import { Result } from './components/Result';
 import { Resume } from './components/Resume';
+import { Spinner } from './components/Spinner';
 
 const initialState = {
   cotization: 0,
@@ -26,6 +27,7 @@ const FormContainer = styled.div`
 
 export const App = () => {
   const [resume, saveResume] = useState(initialState);
+  const [loading, setLoading] = useState(false);
 
   const { cotization, data } = resume;
 
@@ -33,10 +35,10 @@ export const App = () => {
     <Container>
       <Header title='Insurance Policy' />
       <FormContainer>
-        <Form saveResume={saveResume} />
+        <Form saveResume={saveResume} setLoading={setLoading} />
 
         <Resume data={data} />
-        <Result cotization={cotization} />
+        {loading ? <Spinner /> : <Result cotization={cotization} />}
       </FormContainer>
     </Container>
   );
