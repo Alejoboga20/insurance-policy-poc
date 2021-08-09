@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { capitalize } from '../helpers/helper';
 
@@ -26,4 +27,8 @@ export const Resume = ({ data }) => {
       </ul>
     </ResumeContainer>
   );
+};
+
+Resume.propTypes = {
+  data: PropTypes.object.isRequired,
 };

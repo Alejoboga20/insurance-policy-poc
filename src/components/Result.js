@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -45,4 +46,8 @@ export const Result = ({ cotization }) => {
       </TransitionGroup>
     </ResultContainer>
   );
+};
+
+Result.propTypes = {
+  cotization: PropTypes.number.isRequired,
 };

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   getDifferenceYear,
   calculateBrand,
@@ -154,4 +155,9 @@ export const Form = ({ saveResume, setLoading }) => {
       <Button type='submit'>Calculate</Button>
     </form>
   );
+};
+
+Form.propTypes = {
+  saveResume: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
